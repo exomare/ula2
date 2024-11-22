@@ -28,7 +28,6 @@ CHS_LR = ['’'+BL,
           BL+'-',
           BL+'·']
 
-
 class TextCleaner(object):
     """
     Sistema puteggiature
@@ -55,7 +54,7 @@ class TextCleaner(object):
         # sstituisce linessep con spazio
         text = text.replace(os.linesep, " ", -1)
         # elimina spazi multipli
-        text = re.sub(r"[\s]{2,}", "", text)
+        text = re.sub(r"[\s]{2,}", " ", text)
         ls = []
         i = 0
         j = i + line_len
@@ -95,18 +94,13 @@ class TextCleaner(object):
             text = text.replace(p, psp)
 
         # rimuove line sep
-        if linebreak == 0:
-            pattern = r"[\n]+"
-            text = re.sub(pattern, " ", text)
-
+        # if linebreak == 0:
+        #     pattern = r"[\n]+"
+        #     text = re.sub(pattern, " ", text)
         # conserva line sep e rimuove spazi inizio riga
-        else:
-            pattern = r"[ ]*[\n][ ]* "
-            text = re.sub(pattern, "\n", text)
-
-        # rimuove spazi multiplii
-        pattern = r"[ ]{2,}"
-        text = re.sub(pattern, " ", text)
+        # else:
+        #     pattern = r"[ ]*[\n][ ]* "
+        #     text = re.sub(pattern, "\n", text)
 
         # rimuove punti multipli
         # pattern = r"[\.]{2,}"
@@ -115,6 +109,19 @@ class TextCleaner(object):
         # rimuove virgole multiple
         # pattern = r'["]{2,}'
         # text = re.sub(pattern, '"', text)
+
+        # trasforma tab in spazi
+        text = text.replace("\t", " ")
+
+        # Elimina i caratteri di controllo escludendo i newline
+        text = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text)
+
+        # Elimina le righe vuote e le righe con solo spazi
+        text = re.sub(r'^\s*$\n', '', text, flags=re.MULTILINE)
+
+        # rimuove spazi multiplii
+        text = re.sub(r' +', ' ', text)
+
         return text
 
     def clean_file_text(self, in_path, out_path, line_len):
@@ -143,33 +150,35 @@ class TextCleaner(object):
             self.logerr(msg)
             sys.exit(e)
         try:
-            text_clean = self.clean_text(text, lb)
-            if line_len > 0:
-                text_src = self.split_line(text_clean, line_len)
-            elif line_len == 0:
-                text_src = self.split_paragraph(text_clean)
-            else:
-                text_src = text_clean
+             #TODO eliminata condizione split
+            # text_clean = self.clean_text(text, lb)
+            # if line_len > 0:
+            #     text_src = self.split_line(text_clean, line_len)
+            # elif line_len == 0:
+            #     text_src = self.split_paragraph(text_clean)
+            # else:
+            #     text_src = text_clean
+            text_clean = self.clean_text(text, 1)
+            text_src = text_clean
         except Exception as e:
             msg = f'ERROR 2 textcleaner.py \n {e}'
             self.logerr(msg)
-            sys.exit(e)
+            sys.exit(msg)
         try:
             ptu.make_dir_of_file(out_path)
-            fw = open(out_path, 'w+', encoding=ENCODING)
+            fw = open(out_path, 'w', encoding=ENCODING)
             fw.write(text_src)
             fw.close()
             ptu.chmod(out_path, 0o777)
         except Exception as e:
-            msg = f'ERROR 3textcleaner.py \n {e}'
+            msg = f'ERROR3 textcleaner.py \n {e}'
             self.logerr(msg)
-            sys.exit(e)
+            sys.exit(msg)
+        
         print(f"{in_path} =>\n{out_path}\n\n")
-
 
 def do_main(in_path, out_path, line_len):
     TextCleaner().clean_file_text(in_path, out_path, line_len)
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

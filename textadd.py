@@ -5,11 +5,12 @@ import os
 import shutil
 import sys
 from pathlib import Path
+
 import ulalib.pathutils as ptu
 from textcleaner import TextCleaner
 from texttodata import Text2Data
 from ulalib.ula_setting import *
- 
+
 __date__ = "17-11-2024"
 __version__ = "0.2.7"
 __author__ = "Marta Materni"

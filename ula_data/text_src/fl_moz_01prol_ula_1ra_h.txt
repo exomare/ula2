@@ -5,12 +5,11 @@ se doit oïr et escouter
 ce que Aymes vuelt raconter
 assez i puet de bien aprandre
 qui de buen cuer i vuelt entandre
-
 or oëz seignor que je di
 Ayme por Aliane ici
 fist le romanz tant sagement
 que telz l’ orra qui no l’ antent
-por_qoi i fu et faiz et diz		I
+por_qoi i fu et faiz et diz I
 por Juliane fu escriz
 toz_jorz_mais en ert remenbrace
 il ne fu mie faiz en France
@@ -36,7 +35,6 @@ mais n’ estoit pas par_tot seüe
 à Chastillon l’ en aporta
 ensi_com il l’ avoit aprise
 l’ a de latin en romanz mise
-
 Aymes de Varenes retrait
 de anciens or qu’ il ont fait
 les faiz com ce des anciens
