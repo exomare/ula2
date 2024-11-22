@@ -9,10 +9,24 @@ import sys
 import ulalib.pathutils as ptu
 from ulalib.ualog import Log
 from ulalib.ula_setting import *
- 
+
 __date__ = "19-11-2024"
 __version__ = "0.1.7"
 __author__ = "Marta Materni"
+
+ENCODING = 'utf-8'
+PUNCTS = ',.;::?!^~()[]{}<>=+*#@£&%/\\«»“"\'`‘'
+# attacca a
+# sinistra# l’altra => l’ altra
+# destra#   de·l destrucion => de ·l destrucion
+#           destruci-on => destruci -on
+BL = ' '
+PTR_CHS = [r"\s*[’]\s*",
+           r"\s*[-]\s*",
+           r"\s*[·]\s*"]
+CHS_LR = ['’'+BL,
+          BL+'-',
+          BL+'·']
 
 
 class TextCleaner(object):
