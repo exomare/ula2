@@ -78,13 +78,18 @@ class TextAdd(object):
         try:
             # usa DATA_DIR per scrivere l'elenco dei files 
             path_names=ptu.list_path(DATA_DIR,"*.form.csv") 
-            text_names=[x.name for x in path_names]
+            text_names=[x.name.strip() for x in path_names]
             text_names=[x.replace('.form.csv','') for x in text_names]
             text_names.sort()
-            text_str = os.linesep.join(text_names)
-            fw = open(TEXT_LIST_PATH, "w", encoding=ENCODING)
-            fw.write(text_str)
+            # text_str = os.linesep.join(text_names)
+            fw = open(TEXT_LIST_PATH, "w", encoding=ENCODING,newline='')
+            # fw.write(text_str)
+            for s in text_names:
+                fw.write(s)
+                fw.write(os.linesep)
             fw.close()
+
+
         except Exception as e:
             msg = f'ERROR write_text_list \n{e}'
             self.logerr(msg)
