@@ -5,6 +5,7 @@ import csv
 import os
 import sys
 from collections import OrderedDict
+from pdb import set_trace
 
 from ulalib.ula_setting import *
 
@@ -226,7 +227,6 @@ class ExportData(object):
         return row_exp
 
     def export_corpus(self):
-
         #dict di pos_attr e lista msd nme  pos_msd.json
         self.read_pos_msd_csv()
         #tabella conversione sigla dta,loc
@@ -234,13 +234,24 @@ class ExportData(object):
 
         corpus_path = os.path.join(CORPUS_DIR, CORPUS_NAME)
         rows = []
+        # AAA sostituito csvr.reader 
+        # try:
+        #     with open(corpus_path, 'r', encoding=ENCODING) as f:
+        #         reader = csv.reader(f, delimiter='|')
+        #         for row in reader:
+        #             rows.append(row)
+        # except Exception as e:
+        #     sys.exit(e)
         try:
             with open(corpus_path, 'r', encoding=ENCODING) as f:
-                reader = csv.reader(f, delimiter='|')
-                for row in reader:
+                for line in f:
+                    if(len(line.strip())==0):
+                        continue
+                    row = line.strip().split('|')
                     rows.append(row)
         except Exception as e:
             sys.exit(e)
+
         exp_name = f"dictionary.{self.exp_name}.csv"
         exp_path = os.path.join(DATA_EXPORT_DIR, exp_name)
         print(os.linesep)

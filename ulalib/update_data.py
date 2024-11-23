@@ -51,7 +51,8 @@ CORPUS_ROW_LEN = 9
 
 
 class UpdateData(object):
-    """Aggiorna
+    """
+    Aggiorna
     data/text_name.form.csv
     data_corpus/corpus_name.form.csv
     """
@@ -142,7 +143,8 @@ class UpdateData(object):
                 self.text_filled_idx_lst.append(i)
 
     def set_text_corpus_diff_lst(self):
-        """Popola
+        """
+        Popola
         la lista dele coppie text_form, corpus_form
         settate diversamente
         itemm=[text_form,corpus_form]
@@ -179,7 +181,8 @@ class UpdateData(object):
         return self.text_corpus_diff_lst
 
     def set_corpus_omogr_js(self):
-        """Popola
+        """
+        Popola
         la lista corpus_form con formkey omografe
         item=[forma,[i0, i1, .. ,in]]
         js={
@@ -250,7 +253,8 @@ class UpdateData(object):
         self.update_text_forms_lst()
 
     def update_text_forms_lst(self):
-        """Aggiorna
+        """
+        Aggiorna
         data/text_name.form.csv
         con i dati di data_corpus/corpus.form.csv
         AGGIORNA  LE FORM DI TEXT 
@@ -428,7 +432,8 @@ class UpdateData(object):
             raise Exception(msg)
 
     def read_corpus_form_csv(self):
-        """Legge
+        """
+        Legge
         data_corpus/corpus_name.form.csv
         crea la lista delle form e di formakey del corpus
         setta:
@@ -488,7 +493,8 @@ class UpdateData(object):
             self.text_form_lst[i] = row
 
     def update_all_text_forms(self):
-        """Aggiorna
+        """
+        Aggiorna
         data/*.csv
 
         con i dati di data_corpus/corpus_name.form.csv
