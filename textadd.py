@@ -88,8 +88,6 @@ class TextAdd(object):
                 fw.write(s)
                 fw.write(os.linesep)
             fw.close()
-
-
         except Exception as e:
             msg = f'ERROR write_text_list \n{e}'
             self.logerr(msg)

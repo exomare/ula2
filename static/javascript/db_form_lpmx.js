@@ -20,6 +20,10 @@ const KEY_DATA = "ula_data";
 const KEY_DATA_FORM = "ula_form";
 const KEY_DATA_TOKEN = "ula_token";
 
+function clearWnd(txt) {
+  return txt.replace(/\r/g, "");
+}
+
 var DbFormLpmx = {
   text_name: null,
   token_file: null,
@@ -63,7 +67,8 @@ var DbFormLpmx = {
     if (resp.ok) {
       const csv_data = await resp.text();
       //AAA rows = csv_data.trim().split("\n");
-      rows = splitLines(csv_data.trim());
+      const s = clearWnd(csv_data.trim());
+      rows = s.split("\n");
     } else {
       alert(`${url} Not Found. `);
       rows = [];
@@ -75,12 +80,18 @@ var DbFormLpmx = {
     const sf = localStorage.getItem(KEY_DATA_FORM);
     if (sf) {
       //AAA let lst = sf.trim().split("\n");
-      let lst = splitLines(sf.trim());
+      const s = clearWnd(sf.trim());
+      let lst = s.split("\n");
+      console.log("sf lst", lst.slice(0, 10));
+
       this.form_lst = lst.map((x) => x.split("|"));
       const st = localStorage.getItem(KEY_DATA_TOKEN);
       if (st) {
         // AAA lst = st.trim().split("\n");
-        let lst = splitLines(st.trim());
+        const s = clearWnd(st.trim());
+        let lst = s.split("\n");
+        console.log("s lstf", lst.slice(0, 10));
+
         this.token_lst = lst.map((x) => x.split("|"));
         this.sort_form_lst();
         const so = localStorage.getItem(KEY_OMOGR);
@@ -242,6 +253,7 @@ var DbFormLpmx = {
       csv_data = "|||||||";
     }
     const rows = csv_data.trim().split("\n");
+    console.log("load_csv rows",rows.slice(0,10));
     return rows.map((x) => x.split("|"));
   },
   load_omagr: async function () {

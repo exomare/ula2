@@ -32,10 +32,12 @@ class Text2Data(object):
 
     def __init__(self):
         pass
+
     def text2token_list(self, text):
         # mantenimento verso
         row_eof = " ## "
-        text = text.replace(os.linesep, row_eof)
+        #FIXME sostituito linesep  text = text.replace(os.linesep, row_eof)
+        text = text.replace('\n', row_eof)
         lst = re.split(" ", text)
         token_lst = []
         for token in lst:
@@ -71,15 +73,13 @@ class Text2Data(object):
         except Exception as e:
             msg = f'ERROR 1 write_tokens_forms \n{e}'
             sys.exit(msg)
-
         token_lst = self.text2token_list(text)
         #AAA token_lst strip
-        token_lst=[s.rstrip() for s in token_lst]
+        token_lst=[s.strip() for s in token_lst]
         form_lst = self.token_list2form_list(token_lst)
         #AAA form_lst strip
-        form_lst=[s.rstrip() for s in form_lst]
+        form_lst=[s.strip() for s in form_lst]
         file_name = os.path.basename(f_inp)
-
         try:
             f_name_token = file_name.replace(".txt", ".token.csv")
             f_out = ptu.join(DATA_DIR, f_name_token).absolute()

@@ -111,16 +111,15 @@ class TextAdjust(object):
        
         for p in list("’"):
             text=text.replace(f"{p} ",f"{p}")
-
-
-        # rimuove line sep
-        if linebreak == 0:
-            pattern = r"[\n]+"
-            text = re.sub(pattern, " ", text)
-        # conserva line sep e rimuove spazi inizio riga
-        else:
-            pattern = r"[ ]*[\n][ ]* "
-            text = re.sub(pattern, "\n", text)
+        
+        #AAA opzione eliminata  rimuove line sep
+        # if linebreak == 0:
+        #     pattern = r"[\n]+"
+        #     text = re.sub(pattern, " ", text)
+        # # conserva line sep e rimuove spazi inizio riga
+        # else:
+        #     pattern = r"[ ]*[\n][ ]* "
+        #     text = re.sub(pattern, "\n", text)
 
         # rimuove spazi multiplii
         pattern = r"[ ]{2,}"
@@ -147,12 +146,13 @@ class TextAdjust(object):
             sys.exit(e)
         try:
             text_clean = self.adjust_text(text, lb)
-            if line_len > 0:
-                text_src = self.split_line(text_clean, line_len)
-            elif line_len == 0:
-                text_src = self.split_paragraph(text_clean)
-            else:
-                text_src = text_clean
+            #AAA eliminta gestione lineee if line_len > 0:
+            #     text_src = self.split_line(text_clean, line_len)
+            # elif line_len == 0:
+            #     text_src = self.split_paragraph(text_clean)
+            # else:
+            #     text_src = text_clean
+            text_src = text_clean
         except Exception as e:
             msg = f'ERROR 22 textcleaner.py \n {e}'
             self.logerr(msg)
