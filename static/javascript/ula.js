@@ -17,6 +17,13 @@ let T0 = {};
 //   return d;
 // };
 
+function splitLines(text) {
+  const normalizedText = text.replace(/\r\n/g, '\n');
+  const lines = normalizedText.split('\n');
+  return lines.map(line => line.trimEnd());
+}
+
+
 var cmd_close = function () {
   if (confirm("Chiudi Applicazione ?")) window.close();
 };

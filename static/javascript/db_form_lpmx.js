@@ -47,7 +47,7 @@ var DbFormLpmx = {
     const s = text_name.split("_");
     if (s.length > 1) {
       let x = s.slice(-1)[0];
-      console.log("sigla:", x); 
+      console.log("sigla:", x);
       return x;
     }
     return text_name;
@@ -62,7 +62,8 @@ var DbFormLpmx = {
     });
     if (resp.ok) {
       const csv_data = await resp.text();
-      rows = csv_data.trim().split("\n");
+      //AAA rows = csv_data.trim().split("\n");
+      rows = splitLines(csv_data.trim());
     } else {
       alert(`${url} Not Found. `);
       rows = [];
@@ -73,11 +74,13 @@ var DbFormLpmx = {
     let ok = false;
     const sf = localStorage.getItem(KEY_DATA_FORM);
     if (sf) {
-      let lst = sf.trim().split("\n");
+      //AAA let lst = sf.trim().split("\n");
+      let lst = splitLines(sf.trim());
       this.form_lst = lst.map((x) => x.split("|"));
       const st = localStorage.getItem(KEY_DATA_TOKEN);
       if (st) {
-        lst = st.trim().split("\n");
+        // AAA lst = st.trim().split("\n");
+        let lst = splitLines(st.trim());
         this.token_lst = lst.map((x) => x.split("|"));
         this.sort_form_lst();
         const so = localStorage.getItem(KEY_OMOGR);
