@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/ula.min.css" />
     <script type="text/javascript" src="js/ula.min.js"></script>
   </head>
+
   <body>
     <div class="wait">
       <div class="circle"> </div>
@@ -17,8 +18,13 @@
     <div id="lpmx_id"></div>
     <div id="text_id"></div>
   </body>
-
 </html>
 <script>
-  Ula.open();
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM completamente caricato e analizzato");
+    window.addEventListener("load", function () {
+      console.log("Tutti i file esterni (CSS, JavaScript, immagini) sono stati caricati");
+      Ula.open();
+    });
+  });
 </script>

@@ -12,7 +12,7 @@
     <link rel="stylesheet/less" type="text/css" href="less/ula.less" />
     <script type="text/javascript" src="less/less.js"></script>
     <!--  -->
-    <script type="text/javascript" src="javascript/jquery-3.6.0.slim.js"></script>
+    <script type="text/javascript" src="javascript/jquery-3.7.1.slim.js"></script>
     <!--  -->
     <script type="text/javascript" src="javascript/uadrag.js"></script>
     <script type="text/javascript" src="javascript/uajt.js"></script>
@@ -43,5 +43,11 @@
 
 </html>
 <script>
-  Ula.open();
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM completamente caricato e analizzato");
+    window.addEventListener("load", function () {
+      console.log("Tutti i file esterni (CSS, JavaScript, immagini) sono stati caricati");
+      Ula.open();
+    });
+  });
 </script>

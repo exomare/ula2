@@ -42,8 +42,8 @@ var DbFormLpmx = {
     this.form_file = `${text_name}.form.csv`;
   },
   get_sigla: function (text_name) {
-    //XXX
-    console.log("text_name1:", text_name);
+    //XXX gestione sigla
+    console.log("text_name:", text_name);
     const s = text_name.split("_");
     if (s.length > 1) {
       let x = s.slice(-1)[0];

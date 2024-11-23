@@ -5,17 +5,17 @@
 
 let T0 = {};
 
-var start_performance = function (k) {
-  T0.k = performance.now();
-};
+// var start_performance = function (k) {
+//   T0.k = performance.now();
+// };
 
-var log_performance = function (k, msg = "") {
-  const t1 = performance.now();
-  const d = t1 - T0.k;
-  console.log(msg, d);
-  T0.k = t1;
-  return d;
-};
+// var log_performance = function (k, msg = "") {
+//   const t1 = performance.now();
+//   const d = t1 - T0.k;
+//   console.log(msg, d);
+//   T0.k = t1;
+//   return d;
+// };
 
 var cmd_close = function () {
   if (confirm("Chiudi Applicazione ?")) window.close();
@@ -106,7 +106,6 @@ var Ula = {
     await FormLpmx.open();
     await PosMsd.open();
     await Lang.open();
-    // await Sigl.open();
     await Funct.open();
     await FormText.open();
     cmd_wait_stop();
