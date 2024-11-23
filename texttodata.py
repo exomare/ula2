@@ -6,7 +6,6 @@ import re
 import sys
 
 import ulalib.pathutils as ptu
-from ulalib.ualog import Log
 from ulalib.ula_setting import DATA_DIR, PUNCTS
 
 __date__ = "17-11-2024"
@@ -32,9 +31,7 @@ class Text2Data(object):
     """
 
     def __init__(self):
-        path_err = "log/text2data.ERR.log"
-        self.logerr = Log("w").open(path_err, 1).log
-
+        pass
     def text2token_list(self, text):
         # mantenimento verso
         row_eof = " ## "
@@ -73,11 +70,14 @@ class Text2Data(object):
                 text = fr.read()
         except Exception as e:
             msg = f'ERROR 1 write_tokens_forms \n{e}'
-            self.logerr(msg)
             sys.exit(msg)
 
         token_lst = self.text2token_list(text)
+        #AAA token_lst strip
+        token_lst=[s.rstrip() for s in token_lst]
         form_lst = self.token_list2form_list(token_lst)
+        #AAA form_lst strip
+        form_lst=[s.rstrip() for s in form_lst]
         file_name = os.path.basename(f_inp)
 
         try:
@@ -89,7 +89,6 @@ class Text2Data(object):
                 fw.write(tokens)
         except Exception as e:
             msg = f'ERROR 2 write_tokens_forms \n{e}'
-            self.logerr(msg)
             sys.exit(msg)
 
         print(f"{f_inp} =>\n{f_out}\n\n")
@@ -103,7 +102,6 @@ class Text2Data(object):
                 fw.write(forms)
         except Exception as e:
             msg = f'ERROR 3 write_tokens_forms \n{e}'
-            self.logerr(msg)
             sys.exit(msg)
 
         print(f"{f_inp} =>\n{f_out}\n\n")
