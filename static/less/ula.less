@@ -3,21 +3,21 @@
 @import "ulacolor.less";
 @import "tooltip.less";
 
-// @fsize_10: 22px;
-// @fsize_09: 20px;
-// @fsize_08: 17px;
-// @fsize_07: 13px;
-// @fsize_06: 10px;
+@fsize_10: 22px;
+@fsize_09: 20px;
+@fsize_08: 17px;
+@fsize_07: 13px;
+@fsize_06: 10px;
 // @fsize_05: 8px;
 
-@fsize_root:22px;
-@fsize_10: 1rem;     // 22px / 22px = 1rem
-@fsize_09: 0.909rem; // 20px / 22px ≈ 0.909rem
-@fsize_08: 0.773rem; // 17px / 22px ≈ 0.773rem
-@fsize_07: 0.591rem; // 13px / 22px ≈ 0.591rem
-@fsize_06: 0.455rem; // 10px / 22px ≈ 0.455rem
-@fsize_05: 0.364rem; // 8px / 22px ≈ 0.364rem
+@fsize_root: 22px;
 
+// @fsize_10: 1rem;     // 22px / 22px = 1rem
+// @fsize_09: 0.909rem; // 20px / 22px ≈ 0.909rem
+// @fsize_08: 0.773rem; // 17px / 22px ≈ 0.773rem
+// @fsize_07: 0.591rem; // 13px / 22px ≈ 0.591rem
+// @fsize_06: 0.455rem; // 10px / 22px ≈ 0.455rem
+// @fsize_05: 0.364rem; // 8px / 22px ≈ 0.364rem
 
 @font_base: @fsize_10;
 @font_menu: @fsize_09;
@@ -26,7 +26,7 @@
 @font_text2: @fsize_08;
 @font_table: @fsize_08;
 @font_table2: @fsize_07;
-@font_table3: @fsize_05;
+// @font_table3: @fsize_05;
 @font_input: @fsize_08;
 @font_input2: @fsize_07;
 @font_select: @fsize_09;
@@ -746,6 +746,7 @@ div.ula_option {
         min-width: 240px;
         max-width: 240px;
         padding-left: 5px;
+        // background: #00ff00;
       }
 
       td.k {
@@ -770,8 +771,6 @@ div.ula_option {
       td.e {
         min-width: 150px;
         max-width: 150px;
-        // min-width: 145px;
-        // max-width: 145px;
 
         input {
           width: 95%;
@@ -780,11 +779,8 @@ div.ula_option {
 
       td.ph {
         //LANG
-        //AAA LANG SIGL
         min-width: 90px;
         max-width: 90px;
-        // min-width: 95px;
-        // max-width: 95px;
         font-size: @font_text2;
         font-family: @fsans;
       }
@@ -882,7 +878,7 @@ div.ula_option {
       td.f,
       td.k {
         background: @form_empty;
-        color: wheat;
+        color: #f6c160;
       }
     }
   }
@@ -1048,7 +1044,8 @@ div.ula_option {
           color: @cell_color;
           margin: 2px 0 2px 0;
           padding: 5px 2px 5px 2px;
-          font-size: @font_table3 !important;
+          //AAA font-size: @font_table3 !important;
+          font-size: @font_table2;
           font-family: @fsans;
           font-weight: normal;
           text-align: center;
@@ -1214,74 +1211,10 @@ div.ula_option {
   }
 }
 
-// #lpmx_sigl_id {
-//   table {
-//     margin: 0;
-//     border-spacing: 0;
-//     border-collapse: collapse;
-//     display: block;
-//     table-layout: fixed;
-
-//     tr.h {
-//       td {
-//         cursor: move;
-//         background: @cmd_back;
-//         color: @cmd_color;
-//         border: 1px solid @head_border_color;
-//         margin: 0;
-//         padding: 4px 2px 0px 2px;
-//         text-align: center;
-//         text-decoration: none;
-//         font-weight: bold;
-//         font-size: @font_table;
-//         font-family: @fsans;
-//       }
-//     }
-
-//     tr.d {
-//       cursor: pointer;
-
-//       td {
-//         background: @cell_back;
-//         color: @cell_color;
-//         margin: 0;
-//         padding: 4px 0 0 0;
-//         font-size: @font_table;
-//         font-family: @fsans;
-//         font-weight: normal;
-//         text-align: center;
-//         white-space: nowrap;
-//         border-width: 1px;
-//         border-style: solid;
-//         border-color: @cell_border_color;
-//       }
-
-//       td:hover {
-//         background: @cell_hover_back;
-//         color: @cell_hover_color;
-//         text-decoration: underline;
-//       }
-//     }
-
-//     tr.d:nth-child(odd) {
-//       td {
-//         background: darken(@cell_back, 10%);
-//       }
-
-//       td:hover {
-//         background: @cell_hover_back;
-//         color: @cell_hover_color;
-//         text-decoration: underline;
-//       }
-//     }
-//   }
-// }
-
 @context_width: 700px;
 
 #lpmx_context_id {
   min-width: @context_width;
-
   div.cmd {
     cursor: move;
     margin: 0;

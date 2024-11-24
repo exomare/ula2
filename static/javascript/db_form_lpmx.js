@@ -47,11 +47,11 @@ var DbFormLpmx = {
   },
   get_sigla: function (text_name) {
     //XXX gestione sigla
-    console.log("text_name:", text_name);
+    // console.log("text_name:", text_name);
     const s = text_name.split("_");
     if (s.length > 1) {
       let x = s.slice(-1)[0];
-      console.log("sigla:", x);
+      // console.log("sigla:", x);
       return x;
     }
     return text_name;
@@ -82,7 +82,7 @@ var DbFormLpmx = {
       //AAA let lst = sf.trim().split("\n");
       const s = clearWnd(sf.trim());
       let lst = s.split("\n");
-      console.log("sf lst", lst.slice(0, 10));
+      // console.log("sf lst", lst.slice(0, 10));
 
       this.form_lst = lst.map((x) => x.split("|"));
       const st = localStorage.getItem(KEY_DATA_TOKEN);
@@ -90,7 +90,7 @@ var DbFormLpmx = {
         // AAA lst = st.trim().split("\n");
         const s = clearWnd(st.trim());
         let lst = s.split("\n");
-        console.log("s lstf", lst.slice(0, 10));
+        // console.log("s lstf", lst.slice(0, 10));
 
         this.token_lst = lst.map((x) => x.split("|"));
         this.sort_form_lst();
@@ -252,8 +252,9 @@ var DbFormLpmx = {
       // da 7 a 8
       csv_data = "|||||||";
     }
-    const rows = csv_data.trim().split("\n");
-    console.log("load_csv rows",rows.slice(0,10));
+    //AAA const rows = ccsv_data.trim().split("\n");
+    const rows = clearWnd(csv_data.trim()).split("\n");
+    // console.log("load_csv rows",rows.slice(0,10));
     return rows.map((x) => x.split("|"));
   },
   load_omagr: async function () {
@@ -269,7 +270,9 @@ var DbFormLpmx = {
       cache: "no-store",
     });
     if (resp.ok) {
-      const text = await resp.text();
+      let text = await resp.text();
+      // AAA
+      text = clearWnd(text);
       const js = JSON.parse(text);
       return js;
     } else return {};
@@ -290,7 +293,8 @@ var DbFormLpmx = {
         return resp.json();
       })
       .then((js) => {
-        call(js);
+        const s = clearWnd(js);
+        call(s);
       })
       .catch((error) => {
         alert(`load_diff_text_corpus() \n${url}\n${error}`);

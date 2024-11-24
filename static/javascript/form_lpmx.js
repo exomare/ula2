@@ -300,6 +300,7 @@ var FormLpmx = {
     jt.append("</table>");
     const html = jt.html();
     $("#lpmx_rows_id").html(html);
+
     //setta la classe bl per le form che hanno omografi nel corpus
     const fr_lst = document.querySelectorAll("#lpmx_rows_id tr td.fr");
     const omogr_js = DbFormLpmx.omogr_json;
@@ -309,10 +310,12 @@ var FormLpmx = {
       let tr = td.parentElement;
       tr.classList.add("bl");
     }
-
-    //sett la clase emp per le form che non hanno tokens
+    // FIXME empy
+    //setta la clase emppty per le form che non hanno tokens
     const fk_lst = document.querySelectorAll("#lpmx_rows_id tr td[name='fk']");
     let tks = DbFormLpmx.token_lst.map((e) => e[1]);
+    // console.log("tks ",tks.slice(0,10));
+
     let fks = DbFormLpmx.form_lst.map((e) => e[1]);
     let fkes = fks.filter((e) => !tks.includes(e));
     const empty_lst = Array.from(fk_lst).filter((e) => fkes.includes(e.innerHTML));
@@ -321,7 +324,7 @@ var FormLpmx = {
       tr.classList.add("empty");
     }
     this.bind_rows();
-  },
+  }, 
   check_text: function () {
     //seleziona le form del testo che sono omografe in corpus
     const omogr_js = DbFormLpmx.omogr_json;
