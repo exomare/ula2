@@ -17,8 +17,8 @@ from ulalib.ula_setting import (
     TEXT_LIST_PATH,
 )
 
-__date__ = "09-05-2023"
-__version__ = "0.3.6"
+__date__ = "24-11-2024"
+__version__ = "0.3.7"
 __author__ = "Marta Materni"
 """
 text form
@@ -420,6 +420,8 @@ class UpdateData(object):
                 row = row.strip()
                 if row == "":
                     break
+                # FIXME elimina \r
+                row= row.replace('\r', "");
                 cols = row.split('|')
                 if len(cols) < FORM_ROW_LEN:
                     msg = f"ERROR read_text_form_csv\n{self.text_form_path}\n{i}\n{row}\n{cols}\n"
@@ -451,6 +453,8 @@ class UpdateData(object):
                 row = row.strip()
                 if row == "":
                     continue
+                # FIXME elimina \r
+                row= row.replace('\r', "");
                 cols = row.split('|')
                 if len(cols) < CORPUS_ROW_LEN:
                     msg = f"ERROR read_corpus_form\n{i}\n{row}\n{cols}\n"
@@ -480,7 +484,9 @@ class UpdateData(object):
             msg = f'ERROR read_text_lst \n{e}\n'
             self.logerr(msg)
             raise Exception(msg)
-        names = [x.strip() for x in lst]
+       # FIXME elimina \r
+        # names = [x.strip() for x in lst]
+        names = [x.replace('\r', '').strip() for x in lst]
         return names
 
     def clear_text_form_lst(self):

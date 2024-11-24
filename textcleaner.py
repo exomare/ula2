@@ -150,7 +150,7 @@ class TextCleaner(object):
             self.logerr(msg)
             sys.exit(e)
         try:
-             #TODO eliminata condizione split
+             #HACK eliminata condizione split
             # text_clean = self.clean_text(text, lb)
             # if line_len > 0:
             #     text_src = self.split_line(text_clean, line_len)

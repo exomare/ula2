@@ -138,7 +138,7 @@ class UpdateToken(object):
         print("text:", le)
         similar_rows = []
         for i, row1 in enumerate(rows1):
-            # AAA XXXif i > 100: break
+            # AAA if i > 100: break
             if i % 100 == 0:
                 print(i)
             tk1_f = row1[0]

@@ -112,7 +112,7 @@ class TextAdjust(object):
         for p in list("’"):
             text=text.replace(f"{p} ",f"{p}")
         
-        #AAA opzione eliminata  rimuove line sep
+        #HACK opzione eliminata  rimuove line sep
         # if linebreak == 0:
         #     pattern = r"[\n]+"
         #     text = re.sub(pattern, " ", text)
@@ -146,7 +146,7 @@ class TextAdjust(object):
             sys.exit(e)
         try:
             text_clean = self.adjust_text(text, lb)
-            #AAA eliminta gestione lineee if line_len > 0:
+            #HACK eliminta gestione lineee if line_len > 0:
             #     text_src = self.split_line(text_clean, line_len)
             # elif line_len == 0:
             #     text_src = self.split_paragraph(text_clean)

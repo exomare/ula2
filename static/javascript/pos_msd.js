@@ -110,7 +110,6 @@ var PosMsd = {
   },
   open: async function () {
     await PosMsdJson.read_csv();
-    //AAA await PosMsdJson.read();
     let pos_sign_list = PosMsdJson.pos_sign_list();
     let rs = [];
     for (let pos_sign of pos_sign_list) {
@@ -183,7 +182,6 @@ var Msd = {
   setXY: function () {
     var p = $("#lpmx_rows_head_id").offset();
     let left = $("#lpmx_rows_head_id").width() + p.left + 5;
-    // AAA posizione msd
     let top = $("#lpmx_pos_id").height() + 50;
     this.wind.setXY(left, top, -1).show();
   },

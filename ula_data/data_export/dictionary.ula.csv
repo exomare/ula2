@@ -1,4 +1,7 @@
 FORMA|KEY|LEMMA|ETIMO|LANG|DATE|POS|FUNCT|gender|number|case|degree|deterType|MWEs|pronType|person|verbForm|mood|tense|voice|property|adpType|advType|advType2|numType|partType|g|h|p|v|LOC.1|LOC.2|LOC.3|LOC.4|DATE.0|DATE.1|DATE.2
-a|a|a|a|it.|X|noun|Noun|Masc|Sing|Nom||||||||||||||||g||||grenoble||||XII||
+a|a|a|a|it.|X|noun|Noun|Masc|Sing|Nom||||||||||||||||g|h|p||grenoble|tour|paris||XII|XIII|
 al|al|al|al|fr.m.|XIII|determiner|Adj|||||ArtDef|||||||||||||||h||||tour|||XII||
-amer|amer|amer|amer|pr.|X1|properNoun|Noun|Masc|Sing|||||||||||||||||||p||||paris|||XIII|
+aliane|aliane|aliane|aliane|it.|X1|properNoun|Noun|Fem|Plur|Acc||||||||||||||||g||||grenoble||||XII||
+amer|amer|amer|amer|pr.|X1|properNoun|Noun|Masc|Sing|||||||||||||||||g|h|p||grenoble|tour|paris||XII|XIII|
+au|au|au|au|angl.|XIV|coordinating conjunction|CConj||||||MWEs|||||||||||||g||||grenoble||||XII||
+bon|bon|bon|bon|it.|X|pronoun|Noun|Masc|Plur|Nom|||MWEs|Prs|2||||||||||||||v||||venezia|||XIV

@@ -36,7 +36,8 @@ class Text2Data(object):
     def text2token_list(self, text):
         # mantenimento verso
         row_eof = " ## "
-        #FIXME sostituito linesep  text = text.replace(os.linesep, row_eof)
+        #HACK sostituito linesep text = text.replace(os.linesep, row_eof)
+        #TODO sostituito linesep text = text.replace(os.linesep, row_eof)
         text = text.replace('\n', row_eof)
         lst = re.split(" ", text)
         token_lst = []
@@ -74,10 +75,10 @@ class Text2Data(object):
             msg = f'ERROR 1 write_tokens_forms \n{e}'
             sys.exit(msg)
         token_lst = self.text2token_list(text)
-        #AAA token_lst strip
+        #HACKtoken_lst strip
         token_lst=[s.strip() for s in token_lst]
         form_lst = self.token_list2form_list(token_lst)
-        #AAA form_lst strip
+        #HACK form_lst strip
         form_lst=[s.strip() for s in form_lst]
         file_name = os.path.basename(f_inp)
         try:

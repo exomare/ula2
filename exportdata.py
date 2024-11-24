@@ -234,7 +234,7 @@ class ExportData(object):
 
         corpus_path = os.path.join(CORPUS_DIR, CORPUS_NAME)
         rows = []
-        # AAA sostituito csvr.reader 
+        # HACK sostituito csvr.reader 
         # try:
         #     with open(corpus_path, 'r', encoding=ENCODING) as f:
         #         reader = csv.reader(f, delimiter='|')
@@ -347,7 +347,7 @@ class ExportData(object):
             if name.strip() == '':
                 continue            
             # self.text_sigla = name.split('.')[-1:][0]
-            # XXX modificata sigla            
+            # HACK modificata sigla            
             n=name.replace(".","_")
             self.text_sigla = n.split('_')[-1:][0]
             text_name = name + ".txt"

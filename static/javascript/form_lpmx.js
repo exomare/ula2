@@ -213,7 +213,7 @@ var FormLpmx = {
     }
   },
   get_text_name_sg: function (tname) {
-    // XXX
+    // AAA
     // console.log("get_text_name_sg", tname);
     const sg = DbFormLpmx.get_sigla(tname);
     const s = `${tname}&nbsp;&nbsp;&nbsp;&nbsp;${sg.toUpperCase()}`;
@@ -235,7 +235,7 @@ var FormLpmx = {
   },
   select_text: async function () {
     let call = async (text_name) => {
-      // XXX
+      // AAA
       // console.log("select_text1:", text_name);
       const tname = text_name || null;
       if (!tname) return;
@@ -310,7 +310,7 @@ var FormLpmx = {
       let tr = td.parentElement;
       tr.classList.add("bl");
     }
-    // FIXME empy
+    // HACK empy
     //setta la clase emppty per le form che non hanno tokens
     const fk_lst = document.querySelectorAll("#lpmx_rows_id tr td[name='fk']");
     let tks = DbFormLpmx.token_lst.map((e) => e[1]);

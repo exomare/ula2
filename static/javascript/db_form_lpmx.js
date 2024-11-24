@@ -46,7 +46,7 @@ var DbFormLpmx = {
     this.form_file = `${text_name}.form.csv`;
   },
   get_sigla: function (text_name) {
-    //XXX gestione sigla
+    //HACK gestione sigla
     // console.log("text_name:", text_name);
     const s = text_name.split("_");
     if (s.length > 1) {
@@ -66,7 +66,7 @@ var DbFormLpmx = {
     });
     if (resp.ok) {
       const csv_data = await resp.text();
-      //AAA rows = csv_data.trim().split("\n");
+      //HACK rows = csv_data.trim().split("\n");
       const s = clearWnd(csv_data.trim());
       rows = s.split("\n");
     } else {
@@ -79,7 +79,7 @@ var DbFormLpmx = {
     let ok = false;
     const sf = localStorage.getItem(KEY_DATA_FORM);
     if (sf) {
-      //AAA let lst = sf.trim().split("\n");
+      //HACK let lst = sf.trim().split("\n");
       const s = clearWnd(sf.trim());
       let lst = s.split("\n");
       // console.log("sf lst", lst.slice(0, 10));
@@ -87,7 +87,7 @@ var DbFormLpmx = {
       this.form_lst = lst.map((x) => x.split("|"));
       const st = localStorage.getItem(KEY_DATA_TOKEN);
       if (st) {
-        // AAA lst = st.trim().split("\n");
+        // HACK lst = st.trim().split("\n");
         const s = clearWnd(st.trim());
         let lst = s.split("\n");
         // console.log("s lstf", lst.slice(0, 10));
@@ -252,7 +252,7 @@ var DbFormLpmx = {
       // da 7 a 8
       csv_data = "|||||||";
     }
-    //AAA const rows = ccsv_data.trim().split("\n");
+    //HACK const rows = ccsv_data.trim().split("\n");
     const rows = clearWnd(csv_data.trim()).split("\n");
     // console.log("load_csv rows",rows.slice(0,10));
     return rows.map((x) => x.split("|"));
@@ -271,7 +271,7 @@ var DbFormLpmx = {
     });
     if (resp.ok) {
       let text = await resp.text();
-      // AAA
+      // HACK
       text = clearWnd(text);
       const js = JSON.parse(text);
       return js;
@@ -293,8 +293,8 @@ var DbFormLpmx = {
         return resp.json();
       })
       .then((js) => {
-        const s = clearWnd(js);
-        call(s);
+        // const s = clearWnd(js);
+        call(js);
       })
       .catch((error) => {
         alert(`load_diff_text_corpus() \n${url}\n${error}`);
